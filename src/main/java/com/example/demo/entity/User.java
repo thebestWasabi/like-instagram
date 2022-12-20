@@ -2,16 +2,19 @@ package com.example.demo.entity;
 
 import com.example.demo.entity.enums.ERole;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
-@Data
 @Entity
+@Getter
+@Setter
 public class User implements UserDetails {
 
     @Id
@@ -53,7 +56,11 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(Long id, String username, String email, String password, Collection<? extends GrantedAuthority> authorities) {
+    public User(Long id,
+                String username,
+                String email,
+                String password,
+                Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -68,7 +75,7 @@ public class User implements UserDetails {
 
 
     /**
-     * Security
+     * Security methods
      */
 
     @Override
